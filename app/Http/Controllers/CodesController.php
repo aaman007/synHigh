@@ -51,7 +51,7 @@ class CodesController extends Controller
             'body' => $code->body
         ];
 
-        return redirect('/highlight')->with('data',$data);
+        return redirect('/show')->with('$id',$code->id);
     }
 
     /**
@@ -62,7 +62,9 @@ class CodesController extends Controller
      */
     public function show($id)
     {
-        
+        $code = Code::find($id);
+
+        return view('pages.show')->with('code',$code);
     }
 
     /**
