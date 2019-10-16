@@ -18,7 +18,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/prism.css') }}" rel="stylesheet">
 
     
 </head>
@@ -30,12 +29,6 @@
             @yield('content')
         </div>  
     </div>
-
-    <script src="{{asset('js/prism.js')}}"></script>
-    <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
-    <script>
-        CKEDITOR.replace( 'article-ckeditor' );
-    </script>
 
     <hr>
     <!-- Footer Elements -->
