@@ -44,6 +44,7 @@ class CodesController extends Controller
         $code = new Code;
         $code->title = $request->input('title');
         $code->body = $request->input('body');
+        $code->body = "\n" . $code->body;
         $code->save();
 
         $data = [
@@ -51,7 +52,7 @@ class CodesController extends Controller
             'body' => $code->body
         ];
 
-        return redirect('/show')->with('$id',$code->id);
+        return view('pages.show')->with('code',$code);
     }
 
     /**
