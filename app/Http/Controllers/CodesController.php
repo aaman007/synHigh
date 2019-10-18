@@ -52,7 +52,7 @@ class CodesController extends Controller
             'body' => $code->body
         ];
 
-        return view('pages.show')->with('code',$code);
+        return redirect('/show/'. $code->title . '/' . $code->id);
     }
 
     /**
@@ -61,10 +61,9 @@ class CodesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($title,$id)
     {
         $code = Code::find($id);
-
         return view('pages.show')->with('code',$code);
     }
 
