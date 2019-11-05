@@ -11,7 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-     <!-- <script src="{{asset('js/prism.js')}}"></script> -->
+    <script src="{{ asset('js/prism.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,7 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <!-- <link href="{{ asset('css/prism.css') }}" rel="stylesheet"> -->
+    <link href="{{ asset('css/prism.css') }}" rel="stylesheet">
 
     
 </head>
@@ -36,6 +36,11 @@
     <script>
         CKEDITOR.replace( 'article-ckeditor' );
     </script> -->
+
+    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( 'article-ckeditor' );
+    </script>
 
     <hr>
     <!-- Footer Elements -->

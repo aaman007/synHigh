@@ -36,7 +36,6 @@ class CodesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title' => 'required|max:140',
             'body' => 'required' ,
         ]);
 
@@ -45,6 +44,16 @@ class CodesController extends Controller
         $code->title = $request->input('title');
         $code->body = $request->input('body');
         $code->body = "\n" . $code->body;
+
+        $available = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        $randomS = "";
+
+        for($i=0;$i<10;$i++)
+        {
+            $cur = rand(0,61);
+            $randomS = $randomS.(string)$available[$cur];
+        }
+        $code->title = $randomS;
         $code->save();
 
         $data = [
@@ -52,7 +61,7 @@ class CodesController extends Controller
             'body' => $code->body
         ];
 
-        return redirect('/show/'. $code->title . '/' . $code->id);
+        return redirect('/show/'. $code->title);
     }
 
     /**
@@ -61,10 +70,12 @@ class CodesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($title,$id)
+    public function show($title)
     {
-        $code = Code::find($id);
-        return view('pages.show')->with('code',$code);
+        $code = Code::where('title',$title)->get();
+        if(count($code))
+            return view('pages.show')->with('code',$code[0]);
+        return "Funny Bruhh!!!!!! :V :V :V";
     }
 
     /**

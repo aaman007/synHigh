@@ -14,7 +14,7 @@
 Route::get('/', 'PagesController@index');
 
 Auth::routes();
-Route::get('/show/{title}/{id}',['uses' => 'CodesController@show']);
+Route::get('/show/{title}',['uses' => 'CodesController@show']);
 Route::resource('codes','CodesController');
 
 Route::get('/home', 'HomeController@index')->name('home');
