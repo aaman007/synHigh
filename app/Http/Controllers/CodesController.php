@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Code;
+use Auth;
 
 class CodesController extends Controller
 {
@@ -54,6 +55,11 @@ class CodesController extends Controller
             $randomS = $randomS.(string)$available[$cur];
         }
         $code->title = $randomS;
+
+        if(Auth::guest())
+            $code->user_id = -1;
+        else
+            $code->user_id = Auth::user()->id;
         $code->save();
 
         $data = [
@@ -61,7 +67,7 @@ class CodesController extends Controller
             'body' => $code->body
         ];
 
-        return redirect('/show/'. $code->title);
+        return redirect('/'. $code->title);
     }
 
     /**
