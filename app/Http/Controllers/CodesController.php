@@ -55,11 +55,6 @@ class CodesController extends Controller
             $randomS = $randomS.(string)$available[$cur];
         }
         $code->title = $randomS;
-
-        if(Auth::guest())
-            $code->user_id = -1;
-        else
-            $code->user_id = Auth::user()->id;
         $code->save();
 
         $data = [
