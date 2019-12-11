@@ -1,4 +1,4 @@
-Demo : <a href="syn-high.herokuapp.com">Visit</a>
+Demo : <a href="www.syn-high.herokuapp.com">Visit</a>
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
